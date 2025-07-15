@@ -62,7 +62,7 @@ while True:
 
         continue
 
-    # 📌 일반 툴 실행
+    # 일반 툴 실행
     tool_result = None
     if fn_name == "read_file":
         tool_result = read_file(**args)
@@ -75,7 +75,7 @@ while True:
     elif fn_name == "get_largest_files":
         tool_result = get_largest_files(**args)
 
-    # 🔁 2차 GPT 호출 (툴 응답 기반 대화)
+    # 2차 GPT 호출 (툴 응답 기반 대화)
     followup = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
