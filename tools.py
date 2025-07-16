@@ -1,9 +1,13 @@
 import os
 import shutil
 import requests
+from crewai import tool
+
 
 # 1. 텍스트 파일 읽기
+@tool("read_file")
 def read_file(filename: str) -> str:
+    """텍스트 파일을 읽어 반환합니다."""
     try:
         with open(filename, "r", encoding="utf-8") as f:
             return f.read()
@@ -11,8 +15,10 @@ def read_file(filename: str) -> str:
         return f"파일을 읽을 수 없습니다: {str(e)}"
 
 # 2. 날씨 조회 (OpenWeather API 사용)
+@tool("get_weather")
 def get_weather(city: str) -> str:
-    API_KEY = "640c24f59616729fd42cff9972c93165"  # OpenWeather API 키
+    """도시의 날씨를 반환합니다."""
+    API_KEY = "your_openweather_api_key"  # 실제 키로 바꿔줘
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric&lang=kr"
     try:
         res = requests.get(url)
@@ -26,7 +32,9 @@ def get_weather(city: str) -> str:
         return f"❌ 에러 발생: {str(e)}"
 
 # 3. 계산기
+@tool("calculate")
 def calculate(expression: str) -> str:
+    """수학 수식을 계산합니다."""
     try:
         result = eval(expression, {"__builtins__": {}})
         return f"결과는 {result}입니다."
@@ -34,7 +42,9 @@ def calculate(expression: str) -> str:
         return f"계산 오류: {str(e)}"
 
 # 4. 디스크 사용량 확인
+@tool("check_disk_usage")
 def check_disk_usage(path: str = "C:/") -> str:
+    """디스크 사용량을 확인합니다."""
     try:
         total, used, free = shutil.disk_usage(path)
         return (
@@ -47,7 +57,9 @@ def check_disk_usage(path: str = "C:/") -> str:
         return f"디스크 정보 오류: {str(e)}"
 
 # 5. 용량 큰 파일 찾기
+@tool("get_largest_files")
 def get_largest_files(directory: str = "C:/", limit: int = 5) -> str:
+    """용량이 큰 파일 목록을 반환합니다."""
     file_sizes = []
     for root, _, files in os.walk(directory):
         for name in files:
@@ -65,7 +77,9 @@ def get_largest_files(directory: str = "C:/", limit: int = 5) -> str:
     ])
 
 # 6. 현재 위치 조회
+@tool("get_location")
 def get_location() -> str:
+    """현재 위치를 조회합니다."""
     try:
         response = requests.get("https://ipinfo.io/json")
         data = response.json()
@@ -73,90 +87,6 @@ def get_location() -> str:
     except Exception as e:
         return f"위치 정보를 가져오는 데 실패했습니다: {str(e)}"
 
-
-# GPT Tool 사양 목록
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "read_file",
-            "description": "텍스트 파일을 읽어 반환합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "filename": {"type": "string"}
-                },
-                "required": ["filename"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": "도시의 날씨를 반환합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {"type": "string"}
-                },
-                "required": ["city"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "calculate",
-            "description": "수학 수식을 계산합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "expression": {"type": "string"}
-                },
-                "required": ["expression"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "check_disk_usage",
-            "description": "지정된 경로의 디스크 사용량을 반환합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "path": {"type": "string"}
-                },
-                "required": ["path"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_largest_files",
-            "description": "디렉토리에서 가장 큰 파일 목록을 반환합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "directory": {"type": "string"},
-                    "limit": {"type": "integer"}
-                },
-                "required": ["directory", "limit"]
-            }
-        }
-    },
-        {
-        "type": "function",
-        "function": {
-            "name": "get_location",
-            "description": "사용자의 현재 위치를 반환합니다.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": []
-            }
-        }
-    }
-]
+# ✅ 전체 툴을 리스트로 반환하는 함수
+def get_tools():
+    return [read_file, get_weather, calculate, check_disk_usage, get_largest_files, get_location]
