@@ -1,0 +1,92 @@
+[
+  {
+    "location_name": "부산 해운대구 우동",
+    "lat": 35.1631,
+    "lng": 129.1632,
+    "rain_mm": 85.2,
+    "ground_level": 3.8,
+    "flood_risk_level": "높음",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "부산 수영구 광안동",
+    "lat": 35.1530,
+    "lng": 129.1187,
+    "rain_mm": 62.4,
+    "ground_level": 7.1,
+    "flood_risk_level": "보통",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "서울 강남구 역삼동",
+    "lat": 37.5009,
+    "lng": 127.0363,
+    "rain_mm": 28.9,
+    "ground_level": 34.2,
+    "flood_risk_level": "낮음",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "서울 마포구 연남동",
+    "lat": 37.5610,
+    "lng": 126.9255,
+    "rain_mm": 91.0,
+    "ground_level": 3.2,
+    "flood_risk_level": "높음",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "대구 수성구 범어동",
+    "lat": 35.8545,
+    "lng": 128.6311,
+    "rain_mm": 53.6,
+    "ground_level": 22.4,
+    "flood_risk_level": "보통",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "광주 동구 지산동",
+    "lat": 35.1383,
+    "lng": 126.9360,
+    "rain_mm": 75.0,
+    "ground_level": 11.3,
+    "flood_risk_level": "보통",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "인천 연수구 송도동",
+    "lat": 37.3826,
+    "lng": 126.6430,
+    "rain_mm": 48.9,
+    "ground_level": 4.9,
+    "flood_risk_level": "낮음",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "제주 제주시 아라동",
+    "lat": 33.4848,
+    "lng": 126.5404,
+    "rain_mm": 88.0,
+    "ground_level": 5.5,
+    "flood_risk_level": "보통",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "수원 영통구 이의동",
+    "lat": 37.2768,
+    "lng": 127.0442,
+    "rain_mm": 51.2,
+    "ground_level": 14.8,
+    "flood_risk_level": "보통",
+    "last_updated": "2025-08-01T12:00:00"
+  },
+  {
+    "location_name": "부산 동래구 명륜동",
+    "lat": 35.2050,
+    "lng": 129.0791,
+    "rain_mm": 93.7,
+    "ground_level": 2.7,
+    "flood_risk_level": "높음",
+    "last_updated": "2025-08-01T12:00:00"
+  }
+]

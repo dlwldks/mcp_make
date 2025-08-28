@@ -1,18 +1,26 @@
-# 📂 파일명: mcp_core/tool_executor.py
-# 📌 역할: tool 이름에 따라 실제 tool 함수를 실행하고 결과를 리턴
-from tools.weather_info import get_weather_info
-from tools.flood_checker import check_flood_risk
-from tools.flood_map import draw_flood_map
-from tools.evacuation import suggest_evacuation
+# mcp_core/tool_executor.py
 
-def execute_tool(tool_name: str, user_input: str) -> str:
-    if tool_name == "weather":
-        return get_weather_info(user_input)
-    elif tool_name == "flood_checker":
-        return check_flood_risk(user_input)
-    elif tool_name == "flood_map":
-        return draw_flood_map(user_input)
-    elif tool_name == "evacuation":
-        return suggest_evacuation(user_input)
-    else:
-        return "죄송합니다. 해당 요청을 처리할 수 없습니다."
+from mcp_core.tool_router import route_tool
+from models import requests, responses
+from typing import Union
+
+def execute_tool(input_data: Union[
+    requests.WeatherRequest,
+    requests.RainfallRequest,
+    requests.FloodRiskRequest,
+    requests.ElevationRequest,
+    requests.EvacuationRequest
+]) -> Union[
+    responses.WeatherResponse,
+    responses.RainfallResponse,
+    responses.FloodRiskResponse,
+    responses.ElevationResponse,
+    responses.EvacuationResponse
+]:
+    """
+    MCP의 핵심 실행 함수.
+    라우터에서 알맞은 Tool로 전달된 요청 데이터를 처리하고,
+    그 결과를 적절한 Response 모델로 감싸서 반환함.
+    """
+    result = route_tool(input_data)
+    return result
