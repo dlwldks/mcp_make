@@ -1,0 +1,14 @@
+# 환경변수 파일
+.env
+*.env
+mcp_claude/.env
+mcp_claude/venv/.env
+
+# 가상환경 무시
+venv/
+mcp_claude/venv/
+
+# 불필요 테스트 코드 (필요시만 추적)
+mcp_claude/mcp_core/test.py
+mcp_claude/api_test.py
+replacements.txt
