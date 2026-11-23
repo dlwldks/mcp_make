@@ -12,3 +12,7 @@ mcp_claude/venv/
 mcp_claude/mcp_core/test.py
 mcp_claude/api_test.py
 replacements.txt
+
+# 파이썬 캐시
+__pycache__/
+*.pyc

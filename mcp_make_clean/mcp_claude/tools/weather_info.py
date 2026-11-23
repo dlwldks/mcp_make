@@ -15,10 +15,14 @@ from typing import Any, Dict, Optional, Tuple
 from urllib.parse import urlencode
 
 # ─────────────────────────────────────────────────────────────
-# 🔑 API Keys (.env 미사용 → 코드 상수)
+# 🔑 API Keys (.env에서 읽음)
 # ─────────────────────────────────────────────────────────────
-GOOGLE_GEOCODING_API_KEY = "AIzaSyAkPWGJi-XtTtz5D9Pt9sYmy4xcB9HuDtc"
-OPENWEATHER_API_KEY      = "640c24f59616729fd42cff9972c93165"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+GOOGLE_GEOCODING_API_KEY = os.getenv("GOOGLE_GEOCODING_API_KEY", "")
+OPENWEATHER_API_KEY      = os.getenv("OPENWEATHER_API_KEY", "")
 
 # ─────────────────────────────────────────────────────────────
 # 설정

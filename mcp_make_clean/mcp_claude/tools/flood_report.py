@@ -2,7 +2,11 @@ import requests
 from pydantic import BaseModel
 from typing import Dict
 
-API_KEY = "640c24f59616729fd42cff9972c93165"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+API_KEY = os.getenv("OPENWEATHER_API_KEY", "")
 
 class ReportRequest(BaseModel):
     location: str

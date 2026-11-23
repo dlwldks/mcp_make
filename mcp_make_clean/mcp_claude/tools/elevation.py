@@ -16,8 +16,12 @@ import math
 import requests
 from typing import Dict, Tuple
 
-# ✅ Google Elevation API Key (요청대로 코드에 상수 보관)
-GOOGLE_ELEVATION_API_KEY = "AIzaSyAkPWGJi-XtTtz5D9Pt9sYmy4xcB9HuDtc"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+# ✅ Google Elevation API Key (.env에서 읽음)
+GOOGLE_ELEVATION_API_KEY = os.getenv("GOOGLE_ELEVATION_API_KEY", "")
 
 # ─────────────────────────────────────────────────────────────
 # 설정
